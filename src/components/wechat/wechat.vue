@@ -1,20 +1,25 @@
 <template>
-  <div class="wechat">
-    <div class="item" v-for="msg in msgs">
-      <div class="img-wrapper">
-        <img :src="msg.img" width="36" height="36">
-      </div>
-      <div class="content-wrapper">
-        <div class="name">{{ msg.name }}</div>
-        <div class="msg">{{ msg.msg }}</div>
-      </div>
-      <div class="time">{{ msg.time | formatDate }}</div>
+  <div class="wechat" ref="itemScroll">
+    <div class="item-wrapper">
+      <ul>
+        <li class="item" v-for="msg in msgs">
+          <div class="img-wrapper">
+            <img :src="msg.img" width="46" height="46">
+          </div>
+          <div class="content-wrapper">
+            <span class="name">{{ msg.name }}</span><br>
+            <span class="msg">{{ msg.msg }}</span>
+          </div>
+          <div class="time">{{ msg.time | formatDate }}</div>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script>
 import { formatDate } from '../../common/js/date.js'
+import BScroll from 'better-scroll'
 
 const ERR_NO = 0
 
@@ -30,6 +35,11 @@ export default {
       response = response.body
       if (response.errno === ERR_NO) {
         this.msgs = response.data
+        this.$nextTick(() => {
+          this.scroll = new BScroll(this.$refs.itemScroll, {
+            click: true
+          })
+        })
       }
     })
   },
@@ -45,37 +55,52 @@ export default {
 <style lang="stylus" rel="styleesheet/stylus">
   .wechat
     position: absolute
-    top: 2.5em
-    bottom: 3em
+    top: 48px
+    bottom: 56px
     width: 100%
-    overflow: auto
-    .item
-      position: relative
-      display: flex
-      border-bottom: 1px solid #463C3C
-      .img-wrapper
-        flex: 0 0 46px
-        height: 46px
-        line-height: 46px
-        text-align: center
-        img
-          margin-top: 5px
-      .content-wrapper
-        flex: 1
-        .name
-          margin-top: 5px
-          height: 18px
-          line-height: 18px
+    overflow: hidden
+    // overflow: auto
+    .item-wrapper
+      .item
+        position: relative
+        display: flex
+        height: 60px
+        border-bottom: 1px solid #BFB5B5
+        &:last-child
+          border-bottom: none
+        .img-wrapper
+          flex: 0 0 60px
+          height: 60px
+          line-height: 60px
+          text-align: center
+          img
+            margin-top: 5px
+        .content-wrapper
+          flex: 1
+          padding-top: 7px
+          white-space: nowrap
+          overflow: hidden
+          text-overflow: ellipsis
+          .name, .msg
+            // display: inline-block
+          .name
+            margin-top: 8px
+            height: 22px
+            line-height: 22px
+            font-size: 15px
+            font-weight: 700
+          .msg
+            margin-bottom: 8px
+            height: 22px
+            line-height: 22px
+            font-size: 13px
+        .time
+          flex: 0 0 50px
+          width: 50px
+          // position: absolute
+          // top: 7px
+          // right: 8px
           font-size: 12px
-          font-weight: bold
-        .msg
-          margin-bottom: 5px
-          height: 18px
-          line-height: 18px
-          font-size: 10px
-      .time
-        position: absolute
-        top: 5px
-        right: 5px
-        font-size: 10px
+          text-align: center
+          padding-top: 7px
 </style>

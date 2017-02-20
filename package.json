@@ -10,6 +10,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "better-scroll": "^0.1.12",
     "mint-ui": "^2.1.1",
     "vue": "^2.1.10",
     "vue-quill-editor": "^1.1.1",

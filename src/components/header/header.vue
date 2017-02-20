@@ -1,8 +1,12 @@
 <template>
   <div class="header">
     <div class="logo">微信</div>
-    <div class="search">O</div>
-    <div class="add">加</div>
+    <div class="search">
+      <i class="icon-bug"></i>
+    </div>
+    <div class="add">
+      <i class="icon-plus"></i>
+    </div>
   </div>
 </template>
 
@@ -14,22 +18,24 @@ export default {
 
 <style lang="stylus" rel="styleesheet/stylus">
   .header
-    height: 2.5em
+    height: 48px
     background-color: #272822
     color: #ffffff        
     .logo, .search, .add
-      width: 3em
-      height: 2.5em
-      line-height: 2.5em
+      height: 48px
+      line-height: 48px
       text-align: center
-    .search, .add
-      width: 2em
+      font-size: 17px
+    .logo
+      width: 4em
     .search
+      width: 56px
       position: absolute
       top: 0
-      right: 2em
+      right: 61px
     .add
+      width: 56px
       position: absolute
       top: 0
-      right: 0
+      right: 5px
 </style>

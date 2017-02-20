@@ -1,16 +1,28 @@
 <template>
   <div class="footer">
     <div class="tab-item">
-      <router-link to="/wechat">微信</router-link>
+      <router-link to="/wechat">
+        <i class="icon-bubble2"></i>
+        <span class="tab-name">微信</span>
+      </router-link>
     </div>
     <div class="tab-item">
-      <router-link to="/contact">通讯录</router-link>
+      <router-link to="/contact">
+        <i class="icon-users"></i>
+        <span class="tab-name">通讯录</span>
+      </router-link>
     </div>
     <div class="tab-item">
-      <router-link to="/discover">发现</router-link>
+      <router-link to="/discover">
+        <i class="icon-power"></i>
+        <span class="tab-name">发现</span>
+      </router-link>
     </div>
     <div class="tab-item">
-      <router-link to="/me">我</router-link>
+      <router-link to="/me">
+        <i class="icon-user"></i>
+        <span class="tab-name">我</span>
+      </router-link>
     </div>
   </div>
 </template>
@@ -26,17 +38,27 @@ export default {
     position: absolute
     left: 0
     bottom: 1px
-    height: 3em
+    height: 56px
     width: 100%
     display: flex
     .tab-item
       flex: 1
-      border-top: 1px solid #4D4B44
-      height: 3em
-      line-height: 3em
+      border-top: 1px solid #938989
+      height: 56px
+      line-height: 56px
       text-align: center
+      font-size: 12px
       a
         display: block
       .router-link-active
-        color: #77E71E
+        color: #10A727
+      i, .tab-name
+        display: block
+      i
+        font-size: 22px
+        width: 100%
+        line-height: 38px
+      .tab-name
+        width: 100%
+        line-height: 6px
 </style>
