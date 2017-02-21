@@ -20,6 +20,7 @@
 <script>
 import { formatDate } from '../../common/js/date.js'
 import BScroll from 'better-scroll'
+import { Indicator } from 'mint-ui'
 
 const ERR_NO = 0
 
@@ -36,8 +37,21 @@ export default {
       if (response.errno === ERR_NO) {
         this.msgs = response.data
         this.$nextTick(() => {
-          this.scroll = new BScroll(this.$refs.itemScroll, {
-            click: true
+          this.itemScroll = new BScroll(this.$refs.itemScroll, {
+            click: true,
+            probeType: 3
+          })
+          this.itemScroll.on('scroll', function (pos) {
+            if (pos.y >= 60) {
+              Indicator.open()
+              Indicator.open({
+                text: '刷新中...',
+                spinnerType: 'triple-bounce'
+              })
+              setTimeout(() => {
+                Indicator.close()
+              }, 1500)
+            }
           })
         })
       }
