@@ -3,7 +3,6 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-import Index from 'components/index/index'
 import Wechat from 'components/wechat/wechat'
 import Discover from 'components/discover/discover'
 import Contact from 'components/contact/contact'
@@ -13,12 +12,9 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '/',
-      component: Index
-    },
-    {
       path: '/wechat',
-      component: Wechat
+      component: Wechat,
+      alias: '/'
     },
     {
       path: '/discover',
