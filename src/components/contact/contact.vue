@@ -114,7 +114,7 @@ export default {
         line-height: 25px
         padding-left: 15px
         font-size: 16px
-        background-color: #DBDBDB
+        background-color: rgba(191, 188, 188, 0.17)
       .item
         display: flex
         overflow: hidden
@@ -159,6 +159,7 @@ export default {
         height: 100%
         .alpha
           flex: 1
+          font-size: 14px
     .alphaPanel
       position: absolute
       top: 0
