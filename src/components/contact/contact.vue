@@ -113,20 +113,26 @@ export default {
         height: 25px
         line-height: 25px
         padding-left: 15px
-        font-size: 15px
+        font-size: 16px
         background-color: #DBDBDB
       .item
         display: flex
         overflow: hidden
         height: 60px
+        margin-left: 15px
+        margin-right: 15px
+        border-bottom: 1px solid #BFB5B5
+        &:last-child
+          border-bottom: none
         .img-wraaper
-          flex: 0 0 60px
-          line-height: 60px
+          flex: 0 0 48px
+          line-height: 48px
           text-align: center
           img
             margin-top: 5px
         .name
           flex: 1
+          margin-left: 15px
           line-height: 60px
     .contact-count
       width: 100%

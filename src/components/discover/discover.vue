@@ -1,32 +1,42 @@
 <template>
-  <div class="discover">
-    <ul class="title-bar">
-      <li class="item">
-        <i class="icon-home2"></i>
-        <span class="title">扫一扫</span>
-      </li>
-      <li class="item">
-        <i class="icon-compass"></i>
-        <span class="title">摇一摇</span>
-      </li>
-    </ul>
+  <div class="discover" ref="discoverScroll">
+    <div class="wraaper">
+      <ul class="title-bar">
+        <li class="item">
+          <i class="icon-home2"></i>
+          <span class="title">扫一扫</span>
+        </li>
+        <li class="item">
+          <i class="icon-compass"></i>
+          <span class="title">摇一摇</span>
+        </li>
+      </ul>
 
-    <ul class="title-bar">
-      <li class="item">
-        <i class="icon-search"></i>
-        <span class="title">购物</span>
-      </li>
-      <li class="item">
-        <i class="icon-compass2"></i>
-        <span class="title">游戏</span>
-      </li>
-    </ul>
+      <ul class="title-bar">
+        <li class="item">
+          <i class="icon-search"></i>
+          <span class="title">购物</span>
+        </li>
+        <li class="item">
+          <i class="icon-compass2"></i>
+          <span class="title">游戏</span>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
+import BScroll from 'better-scroll'
 export default {
-  name: 'discover'
+  name: 'discover',
+  created () {
+    this.$nextTick(() => {
+      this.discoverScroll = new BScroll(this.$refs.discoverScroll, {
+        click: true
+      })
+    })
+  }
 }
 </script>
 
@@ -61,6 +71,6 @@ export default {
           display: inline-block
           line-height: 50px
           vertical-align: top
-          font-size: 14px
+          font-size: 16px
           margin-left: 15px
 </style>

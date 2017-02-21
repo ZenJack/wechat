@@ -4,7 +4,7 @@
       <ul>
         <li class="item" v-for="msg in msgs">
           <div class="img-wrapper">
-            <img :src="msg.img" width="46" height="46">
+            <img :src="msg.img" width="48" height="48">
           </div>
           <div class="content-wrapper">
             <span class="name">{{ msg.name }}</span><br>
@@ -63,20 +63,20 @@ export default {
       .item
         position: relative
         display: flex
-        height: 60px
+        height: 70px
         border-bottom: 1px solid #BFB5B5
         &:last-child
           border-bottom: none
         .img-wrapper
-          flex: 0 0 60px
-          height: 60px
-          line-height: 60px
+          flex: 0 0 70px
+          height: 70px
+          line-height: 70px
           text-align: center
           img
-            margin-top: 5px
+            margin-top: 11px
         .content-wrapper
           flex: 1
-          padding-top: 7px
+          padding-top: 14px
           white-space: nowrap
           overflow: hidden
           text-overflow: ellipsis
@@ -86,13 +86,13 @@ export default {
             margin-top: 8px
             height: 22px
             line-height: 22px
-            font-size: 15px
-            font-weight: 700
+            font-size: 16px
           .msg
             margin-bottom: 8px
             height: 22px
             line-height: 22px
-            font-size: 13px
+            font-size: 14px
+            color: #767575
         .time
           flex: 0 0 50px
           width: 50px
