@@ -1,3 +1,4 @@
+
 <template>
   <div class="wechat" ref="itemScroll">
     <div class="item-wrapper">
@@ -78,7 +79,7 @@ export default {
         position: relative
         display: flex
         height: 70px
-        border-bottom: 1px solid #BFB5B5
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12)
         &:last-child
           border-bottom: none
         .img-wrapper
@@ -94,8 +95,6 @@ export default {
           white-space: nowrap
           overflow: hidden
           text-overflow: ellipsis
-          .name, .msg
-            // display: inline-block
           .name
             margin-top: 8px
             height: 22px
@@ -110,9 +109,6 @@ export default {
         .time
           flex: 0 0 50px
           width: 50px
-          // position: absolute
-          // top: 7px
-          // right: 8px
           font-size: 12px
           text-align: center
           padding-top: 7px

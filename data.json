@@ -1,4 +1,12 @@
 {
+  "account": {
+    "nickname": "宋江",
+    "img": "/static/images/349878_7044878_1.jpg",
+    "account": "jishiyu",
+    "gender": "男",
+    "area": "山东 梁山",
+    "signature": "忠义第一"
+  },
   "wechat": [
     
     {
