@@ -17,3 +17,10 @@ new Vue({
   components: { App, Mint }
 })
 
+Vue.filter('uppercase', function (value) {
+  if (!value) {
+    return ''
+  }
+  value = value.toString()
+  return value.charAt(0).toUpperCase() + value.slice(1)
+})

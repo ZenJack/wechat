@@ -4,7 +4,7 @@
       <ul>
         <li class="item" v-for="msg in msgs">
           <div class="img-wrapper">
-            <img :src="msg.img" width="46" height="46">
+            <img :src="msg.img" width="48" height="48">
           </div>
           <div class="content-wrapper">
             <span class="name">{{ msg.name }}</span><br>
@@ -20,6 +20,7 @@
 <script>
 import { formatDate } from '../../common/js/date.js'
 import BScroll from 'better-scroll'
+import { Indicator } from 'mint-ui'
 
 const ERR_NO = 0
 
@@ -36,8 +37,21 @@ export default {
       if (response.errno === ERR_NO) {
         this.msgs = response.data
         this.$nextTick(() => {
-          this.scroll = new BScroll(this.$refs.itemScroll, {
-            click: true
+          this.itemScroll = new BScroll(this.$refs.itemScroll, {
+            click: true,
+            probeType: 3
+          })
+          this.itemScroll.on('scroll', function (pos) {
+            if (pos.y >= 60) {
+              Indicator.open()
+              Indicator.open({
+                text: '刷新中...',
+                spinnerType: 'triple-bounce'
+              })
+              setTimeout(() => {
+                Indicator.close()
+              }, 1500)
+            }
           })
         })
       }
@@ -59,25 +73,24 @@ export default {
     bottom: 56px
     width: 100%
     overflow: hidden
-    // overflow: auto
     .item-wrapper
       .item
         position: relative
         display: flex
-        height: 60px
+        height: 70px
         border-bottom: 1px solid #BFB5B5
         &:last-child
           border-bottom: none
         .img-wrapper
-          flex: 0 0 60px
-          height: 60px
-          line-height: 60px
+          flex: 0 0 70px
+          height: 70px
+          line-height: 70px
           text-align: center
           img
-            margin-top: 5px
+            margin-top: 11px
         .content-wrapper
           flex: 1
-          padding-top: 7px
+          padding-top: 14px
           white-space: nowrap
           overflow: hidden
           text-overflow: ellipsis
@@ -87,13 +100,13 @@ export default {
             margin-top: 8px
             height: 22px
             line-height: 22px
-            font-size: 15px
-            font-weight: 700
+            font-size: 16px
           .msg
             margin-bottom: 8px
             height: 22px
             line-height: 22px
-            font-size: 13px
+            font-size: 14px
+            color: #767575
         .time
           flex: 0 0 50px
           width: 50px

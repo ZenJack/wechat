@@ -2,7 +2,7 @@
   <div class="header">
     <div class="logo">微信</div>
     <div class="search">
-      <i class="icon-bug"></i>
+      <i class="icon-search"></i>
     </div>
     <div class="add" @click="add">
       <i class="icon-plus"></i>
@@ -12,23 +12,23 @@
         <div class="menu-wraaper" v-show="addPanel">
           <ul>
             <li class="item">
-              <i class="icon-bubble2"></i>
+              <i class="icon-bubble"></i>
               <span class="name">发起群聊</span>
             </li>
             <li class="item">
-              <i class="icon-bug"></i>
+              <i class="icon-user-plus"></i>
               <span class="name">添加朋友</span>
             </li>
             <li class="item">
-              <i class="icon-power"></i>
+              <i class="icon-spinner3"></i>
               <span class="name">扫一扫</span>
             </li>
             <li class="item">
-              <i class="icon-plus"></i>
+              <i class="icon-coin-yen"></i>
               <span class="name">收付款</span>
             </li>
             <li class="item">
-              <i class="icon-users"></i>
+              <i class="icon-mail2"></i>
               <span class="name">帮助与反馈</span>
             </li>
           </ul>
@@ -68,15 +68,17 @@ export default {
     .logo
       width: 4em
     .search
-      width: 56px
+      width: 40px
       position: absolute
       top: 0
-      right: 61px
+      right: 60px
+      font-size: 20px
     .add
-      width: 56px
+      width: 40px
       position: absolute
       top: 0
-      right: 5px
+      right: 13px
+      font-size: 18px
     .addPanel
       position: fixed
       left: 0

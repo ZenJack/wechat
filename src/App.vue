@@ -25,5 +25,5 @@ export default {
   @import "./common/stylus/icon.styl"
 
   #app
-    font-size: 14px
+    font-size: 16px
 </style>
