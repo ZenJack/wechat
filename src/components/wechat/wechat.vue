@@ -59,7 +59,6 @@ export default {
     bottom: 56px
     width: 100%
     overflow: hidden
-    // overflow: auto
     .item-wrapper
       .item
         position: relative

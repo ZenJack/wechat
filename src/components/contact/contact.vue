@@ -13,7 +13,7 @@
             </li>
           </ul>
         </li>
-        <li class="contact-count">
+        <li class="contact-count" v-show="contactCountShow">
           {{contactCount}}位联系人
         </li>
       </ul>
@@ -42,7 +42,8 @@ export default {
       alphatab: ['↑', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'U', 'V', 'W', 'X', 'Y', 'Z', '#'],
       selectedAlphatab: false,
       alpha: '',
-      contactList: []
+      contactList: [],
+      contactCountShow: false
     }
   },
   created () {
@@ -52,6 +53,7 @@ export default {
         this.contacts = response.data.sort(function (a, b) {
           return a.name.localeCompare(b.name)
         })
+        this.contactCountShow = true
         this.$nextTick(() => {
           this.contactScroll = new BScroll(this.$refs.contactScroll, {
             click: true,

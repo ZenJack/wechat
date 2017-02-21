@@ -68,15 +68,17 @@ export default {
     .logo
       width: 4em
     .search
-      width: 56px
+      width: 40px
       position: absolute
       top: 0
-      right: 61px
+      right: 60px
+      font-size: 20px
     .add
-      width: 56px
+      width: 40px
       position: absolute
       top: 0
-      right: 5px
+      right: 13px
+      font-size: 18px
     .addPanel
       position: fixed
       left: 0
