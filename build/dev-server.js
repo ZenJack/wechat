@@ -31,6 +31,14 @@ apiRoutes.get('/wechat', function (req, res) {
   })
 })
 
+apiRoutes.get('/contacts', function (req, res) {
+  res.json({
+    errno: 0,
+    data: appData.contacts
+  })
+})
+
+app.use('/static', express.static('../static'))
 app.use('/api', apiRoutes)
 
 var compiler = webpack(webpackConfig)
