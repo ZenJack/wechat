@@ -121,7 +121,7 @@ export default {
         height: 60px
         margin-left: 15px
         margin-right: 15px
-        border-bottom: 1px solid #BFB5B5
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12)
         &:last-child
           border-bottom: none
         .img-wraaper

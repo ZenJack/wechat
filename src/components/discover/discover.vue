@@ -60,7 +60,7 @@ export default {
         margin-right: 15px
         height: 50px
         line-height: 50px
-        border-bottom: 1px solid rgba(0, 0, 0, 0.38)
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12)
         font-size: 0
         &:last-child
           border-bottom: none

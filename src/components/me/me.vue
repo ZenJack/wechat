@@ -3,13 +3,13 @@
     <div class="content-wrapper">
       <ul class="title-bar">
         <h1 class="ul-title"></h1>
-        <li class="person">
+        <li class="person" @click="showAccountPanel()">
           <div class="img-wrapper">
             <img src="/static/images/349878_7044878_1.jpg" width="70" height="70">
           </div>
           <div class="content-wrapper">
-            <div class="nickname">宋江</div>
-            <div class="account">微信号：jishiyu</div>
+            <div class="nickname">{{ account.nickname }}</div>
+            <div class="wechatAccount">微信号：{{ account.account }}</div>
           </div>
         </li> 
       </ul>
@@ -50,20 +50,47 @@
         </li>
       </ul>
     </div>
+    <v-account @back="pageBack" :account="account" v-show="showAccount"></v-account>
   </div>
 </template>
 
 <script>
 import BScroll from 'better-scroll'
+import Account from 'components/account/account'
+
+const ERR_NO = 0
 
 export default {
   name: 'me',
+  components: {
+    'v-account': Account
+  },
+  data () {
+    return {
+      account: {},
+      showAccount: false
+    }
+  },
   created () {
-    this.$nextTick(() => {
-      this.meScroll = new BScroll(this.$refs.meScroll, {
-        click: true
-      })
+    this.$http.get('/api/account').then((response) => {
+      response = response.body
+      if (response.errno === ERR_NO) {
+        this.account = response.data
+        this.$nextTick(() => {
+          this.meScroll = new BScroll(this.$refs.meScroll, {
+            click: true
+          })
+        })
+      }
     })
+  },
+  methods: {
+    showAccountPanel () {
+      this.showAccount = true
+    },
+    pageBack () {
+      this.showAccount = false
+    }
   }
 }
 </script>
@@ -98,7 +125,7 @@ export default {
             margin-left: 20px
             .nickname
               margin-top: 30px
-            .account
+            .wechatAccount
               margin-top: 8px
               font-size: 14px
               color: #767575
@@ -107,7 +134,7 @@ export default {
           margin-right: 15px
           height: 50px
           line-height: 50px
-          border-bottom: 1px solid rgba(0, 0, 0, 0.38)
+          border-bottom: 1px solid rgba(0, 0, 0, 0.12)
           font-size: 0
           &:last-child
             border-bottom: none

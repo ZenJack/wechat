@@ -22,24 +22,31 @@ var proxyTable = config.dev.proxyTable
 
 var app = express()
 var appData = require('../data.json')
-var apiRoutes = express.Router()
+var router = express.Router()
 
-apiRoutes.get('/wechat', function (req, res) {
+router.get('/wechat', function (req, res) {
   res.json({
     errno: 0,
     data: appData.wechat
   })
 })
 
-apiRoutes.get('/contacts', function (req, res) {
+router.get('/contacts', function (req, res) {
   res.json({
     errno: 0,
     data: appData.contacts
   })
 })
 
+router.get('/account', function (req, res) {
+  res.json({
+    errno: 0,
+    data: appData.account
+  })
+})
+
 app.use('/static', express.static('../static'))
-app.use('/api', apiRoutes)
+app.use('/api', router)
 
 var compiler = webpack(webpackConfig)
 
