@@ -8,6 +8,7 @@ import Discover from 'components/discover/discover'
 import Contact from 'components/contact/contact'
 import Me from 'components/me/me'
 import Account from 'components/account/account'
+import Search from 'components/search/search'
 
 export default new Router({
   mode: 'history',
@@ -32,6 +33,10 @@ export default new Router({
     {
       path: '/account',
       component: Account
+    },
+    {
+      path: '/search',
+      component: Search
     }
   ]
 })

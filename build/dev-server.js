@@ -45,6 +45,13 @@ router.get('/account', function (req, res) {
   })
 })
 
+router.get('/news', function (req, res) {
+  res.json({
+    errno: 0,
+    data: appData.news
+  })
+})
+
 app.use('/static', express.static('../static'))
 app.use('/api', router)
 

@@ -1,11 +1,16 @@
 <template>
   <div class="header">
-    <div class="logo">微信</div>
-    <div class="search">
-      <i class="icon-search"></i>
-    </div>
-    <div class="add" @click="add">
-      <i class="icon-plus"></i>
+    <div class="header-bar">
+      <div class="logo">微信</div>
+      <div class="other"></div>
+      <div class="btn-search">
+        <router-link to="/search">
+          <i class="icon-search"></i>
+        </router-link>
+      </div>
+      <div class="btn-add" @click="add">
+        <i class="icon-plus"></i>
+      </div>
     </div>
     <div class="addPanel" v-show="addPanel" @click="add">
       <transition name="fade">
@@ -59,26 +64,31 @@ export default {
   .header
     height: 48px
     background-color: #272822
-    color: #ffffff        
-    .logo, .search, .add
-      height: 48px
-      line-height: 48px
+    color: #ffffff
+    .header-bar
+      height: 100%
+      display: flex
       text-align: center
-      font-size: 17px
-    .logo
-      width: 4em
-    .search
-      width: 40px
-      position: absolute
-      top: 0
-      right: 60px
-      font-size: 20px
-    .add
-      width: 40px
-      position: absolute
-      top: 0
-      right: 13px
-      font-size: 18px
+      align-items: center
+      .btn-search, .btn-add
+        width: 40px
+        height: 100%
+        line-height: 48px
+      .logo
+        flex: 0 0 4em
+        width: 4em
+      .other
+        flex: 1
+      .btn-search
+        flex: 0 0 40px
+        font-size: 18px
+        padding-top: 3px
+        i
+          color: #ffffff
+          font-size: 20px
+      .btn-add
+        flex: 0 0 40px
+        margin-right: 10px
     .addPanel
       position: fixed
       left: 0
@@ -93,12 +103,12 @@ export default {
         width: 210px
         background-color: #272822
         &.fade-enter-active
-          transition: all 1s
+          transition: all 0.5s
           opacity: 1
         &.fade-enter
           opacity: 0
         &.fade-leave-active
-          transition: all 1s
+          transition: all 0.5s
           opacity: 0
         &.fade-leave
           opacity: 1

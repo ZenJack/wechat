@@ -29,7 +29,8 @@ export default {
   name: 'wechat',
   data () {
     return {
-      msgs: []
+      msgs: [],
+      refresh: false
     }
   },
   created () {
@@ -37,13 +38,15 @@ export default {
       response = response.body
       if (response.errno === ERR_NO) {
         this.msgs = response.data
+        let _this = this
         this.$nextTick(() => {
           this.itemScroll = new BScroll(this.$refs.itemScroll, {
             click: true,
             probeType: 3
           })
           this.itemScroll.on('scroll', function (pos) {
-            if (pos.y >= 60) {
+            if (pos.y >= 60 && !_this.refresh) {
+              _this.refresh = true
               Indicator.open()
               Indicator.open({
                 text: '刷新中...',
@@ -51,6 +54,7 @@ export default {
               })
               setTimeout(() => {
                 Indicator.close()
+                _this.addMsgs()
               }, 1500)
             }
           })
@@ -61,7 +65,34 @@ export default {
   filters: {
     formatDate (time) {
       let date = new Date()
+      date.setTime(time)
       return formatDate(date, 'hh:mm')
+    }
+  },
+  methods: {
+    addMsgs () {
+      this.$http.get('/api/news').then((response) => {
+        response = response.body
+        if (response.errno === ERR_NO) {
+          let news = response.data
+          let index = -1
+          while (true) {
+            index = Math.floor(Math.random() * news.length)
+            if (index >= 0 && index < news.length) {
+              break
+            }
+          }
+          let msg = news[index]
+          msg.time = new Date().getTime()
+          this.msgs.unshift(msg)
+          this.refresh = false
+          this.$nextTick(() => {
+            if (this.itemScroll) {
+              this.itemScroll.refresh()
+            }
+          })
+        }
+      })
     }
   }
 }
