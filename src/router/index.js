@@ -7,6 +7,7 @@ import Wechat from 'components/wechat/wechat'
 import Discover from 'components/discover/discover'
 import Contact from 'components/contact/contact'
 import Me from 'components/me/me'
+import Account from 'components/account/account'
 
 export default new Router({
   mode: 'history',
@@ -27,6 +28,10 @@ export default new Router({
     {
       path: '/me',
       component: Me
+    },
+    {
+      path: '/account',
+      component: Account
     }
   ]
 })

@@ -1,7 +1,9 @@
 <template>
   <div class="account" ref="meScroll">
     <header>
-      <i class="icon-arrow-left2" @click="back()"></i>
+      <router-link to="/me">
+        <i class="icon-arrow-left2"></i>
+      </router-link>
       <span class="title">个人信息</span>
     </header>
     <div class="content-wrapper">
@@ -47,23 +49,25 @@
 </template>
 
 <script>
+
+const ERR_NO = 0
+
 export default {
-  name: 'me',
-  props: {
-    account: {
-      type: Object
-    }
-  },
+  name: 'account',
   data () {
     return {
+      account: {}
     }
   },
   created () {
+    this.$http.get('/api/account').then((response) => {
+      response = response.body
+      if (response.errno === ERR_NO) {
+        this.account = response.data
+      }
+    })
   },
   methods: {
-    back () {
-      this.$emit('back')
-    }
   }
 }
 </script>
@@ -89,6 +93,7 @@ export default {
         line-height: 48px
         text-align: center
         font-size: 18px
+        color: #fff
       .title
         display: inline-block
         border-left: 1px solid rgba(154, 144, 144, 0.95)

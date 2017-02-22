@@ -3,15 +3,17 @@
     <div class="content-wrapper">
       <ul class="title-bar">
         <h1 class="ul-title"></h1>
-        <li class="person" @click="showAccountPanel()">
-          <div class="img-wrapper">
-            <img src="/static/images/349878_7044878_1.jpg" width="70" height="70">
-          </div>
-          <div class="content-wrapper">
-            <div class="nickname">{{ account.nickname }}</div>
-            <div class="wechatAccount">微信号：{{ account.account }}</div>
-          </div>
-        </li> 
+        <router-link to="/account">
+          <li class="person">
+            <div class="img-wrapper">
+              <img src="/static/images/349878_7044878_1.jpg" width="70" height="70">
+            </div>
+            <div class="content-wrapper">
+              <div class="nickname">{{ account.nickname }}</div>
+              <div class="wechatAccount">微信号：{{ account.account }}</div>
+            </div>
+          </li> 
+        </router-link>
       </ul>
       <ul class="title-bar">
         <h1 class="ul-title"></h1>
@@ -50,20 +52,17 @@
         </li>
       </ul>
     </div>
-    <v-account @back="pageBack" :account="account" v-show="showAccount"></v-account>
   </div>
 </template>
 
 <script>
 import BScroll from 'better-scroll'
-import Account from 'components/account/account'
 
 const ERR_NO = 0
 
 export default {
   name: 'me',
   components: {
-    'v-account': Account
   },
   data () {
     return {
@@ -85,12 +84,6 @@ export default {
     })
   },
   methods: {
-    showAccountPanel () {
-      this.showAccount = true
-    },
-    pageBack () {
-      this.showAccount = false
-    }
   }
 }
 </script>
