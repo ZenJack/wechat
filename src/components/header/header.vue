@@ -8,11 +8,11 @@
           <i class="icon-search"></i>
         </router-link>
       </div>
-      <div class="btn-add" @click="add">
+      <div class="btn-add" @click="toggleAdd">
         <i class="icon-plus"></i>
       </div>
     </div>
-    <div class="addPanel" v-show="addPanel" @click="add">
+    <div class="addPanel" v-show="addPanel" @click.stop="toggleAdd">
       <transition name="fade">
         <div class="menu-wraaper" v-show="addPanel">
           <ul>
@@ -33,7 +33,7 @@
               <span class="name">收付款</span>
             </li>
             <li class="item">
-              <i class="icon-mail2"></i>
+              <i class="icon-envelop"></i>
               <span class="name">帮助与反馈</span>
             </li>
           </ul>
@@ -46,13 +46,17 @@
 <script>
 export default {
   name: 'header',
+  beforeRouteLeave (to, from, next) {
+    console.log('leave')
+    next()
+  },
   data () {
     return {
       addPanel: false
     }
   },
   methods: {
-    add () {
+    toggleAdd () {
       let flag = !this.addPanel
       this.addPanel = flag
     }
@@ -89,26 +93,27 @@ export default {
       .btn-add
         flex: 0 0 40px
         margin-right: 10px
+        z-index: 10
     .addPanel
       position: fixed
       left: 0
-      top: 48px
+      top: 0
       width: 100%
       height: 100%
       z-index: 1
       .menu-wraaper
         position: absolute
         right: 10px
-        top: 0
+        top: 47px
         width: 210px
         background-color: #272822
         &.fade-enter-active
-          transition: all 0.5s
+          transition: all 0.3s
           opacity: 1
         &.fade-enter
           opacity: 0
         &.fade-leave-active
-          transition: all 0.5s
+          transition: all 0.2s
           opacity: 0
         &.fade-leave
           opacity: 1

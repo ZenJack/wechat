@@ -35,15 +35,15 @@ export default {
 
 <style lang="stylus" rel="styleesheet/stylus">
   .footer
-    position: absolute
+    position: fixed
     left: 0
-    bottom: 1px
+    bottom: 0
     height: 56px
     width: 100%
     display: flex
+    border-top: 1px solid #938989
     .tab-item
       flex: 1
-      border-top: 1px solid #938989
       height: 56px
       line-height: 56px
       text-align: center

@@ -54,6 +54,13 @@ const ERR_NO = 0
 
 export default {
   name: 'account',
+  beforeRouteEnter (to, from, next) {
+    if (from.path === '/me') {
+      next()
+    } else {
+      next('/wechat')
+    }
+  },
   data () {
     return {
       account: {}
