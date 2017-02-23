@@ -2,9 +2,7 @@
   <div class="search" ref="meScroll">
     <header class="title-bar">
       <div class="back" @click="back">
-        <router-link to="/wechat">
-          <i class="icon-arrow-left2"></i>
-        </router-link>
+        <i class="icon-arrow-left2"></i>
       </div>
       <div class="content">
         <i class="icon-search"></i>
@@ -35,6 +33,9 @@ const ERR_NO = 0
 
 export default {
   name: 'search',
+  deactivated () {
+    this.clearSearchText()
+  },
   data () {
     return {
       searchedContacts: [],
@@ -61,7 +62,7 @@ export default {
       this.searchText = ''
     },
     back () {
-      this.$destroy()
+      history.back()
     },
     search (value, oldValue) {
       this.$http.get('/api/contacts').then((response) => {
@@ -87,7 +88,7 @@ export default {
       contacts.forEach((item) => {
         item.contact.forEach((contact) => {
           let name = contact.name
-          if (name.match(target)) {
+          if (name.indexOf(target) > -1) {
             contact.name = name.replace(target, highlight)
             list.push(contact)
           }

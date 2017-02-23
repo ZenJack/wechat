@@ -1,7 +1,7 @@
-
 <template>
-  <div class="wechat" ref="itemScroll">
-    <div class="item-wrapper">
+  <div class="wechat">
+    <v-header></v-header>
+    <div class="item-wrapper" ref="itemScroll">
       <ul>
         <li class="item" v-for="msg in msgs">
           <div class="img-wrapper">
@@ -15,10 +15,14 @@
         </li>
       </ul>
     </div>
+    <v-footer></v-footer>
   </div>
 </template>
 
 <script>
+import Header from 'components/header/header.vue'
+import Footer from 'components/footer/footer.vue'
+
 import { formatDate } from '../../common/js/date.js'
 import BScroll from 'better-scroll'
 import { Indicator } from 'mint-ui'
@@ -27,11 +31,18 @@ const ERR_NO = 0
 
 export default {
   name: 'wechat',
+  activated () {
+    this.init()
+  },
   data () {
     return {
       msgs: [],
       refresh: false
     }
+  },
+  components: {
+    'v-header': Header,
+    'v-footer': Footer
   },
   created () {
     this.$http.get('/api/wechat').then((response) => {
@@ -70,6 +81,11 @@ export default {
     }
   },
   methods: {
+    init () {
+      if (this.itemScroll) {
+        this.itemScroll.refresh()
+      }
+    },
     addMsgs () {
       this.$http.get('/api/news').then((response) => {
         response = response.body
@@ -100,14 +116,18 @@ export default {
 
 <style lang="stylus" rel="styleesheet/stylus">
   .wechat
-    position: absolute
-    top: 48px
-    bottom: 56px
+    position: fixed
+    top: 0
+    bottom: 0
     width: 100%
-    overflow: hidden
+    height: 100%
     .item-wrapper
+      overflow: hidden
+      position: absolute
+      top: 48px
+      bottom: 57px
+      width: 100%
       .item
-        position: relative
         display: flex
         height: 70px
         border-bottom: 1px solid rgba(0, 0, 0, 0.12)
