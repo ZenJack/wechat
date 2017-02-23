@@ -1,68 +1,80 @@
 <template>
-  <div class="me" ref="meScroll">
-    <div class="content-wrapper">
-      <ul class="title-bar">
-        <h1 class="ul-title"></h1>
-        <router-link to="/account">
-          <li class="person">
-            <div class="img-wrapper">
-              <img src="/static/images/349878_7044878_1.jpg" width="70" height="70">
-            </div>
-            <div class="content-wrapper">
-              <div class="nickname">{{ account.nickname }}</div>
-              <div class="wechatAccount">微信号：{{ account.account }}</div>
-            </div>
-          </li> 
-        </router-link>
-      </ul>
-      <ul class="title-bar">
-        <h1 class="ul-title"></h1>
-        <li class="item">
-          <i class="icon-image"></i>
-          <span class="title">相册</span>
-        </li>
-        <li class="item">
-          <i class="icon-briefcase"></i>
-          <span class="title">收藏</span>
-        </li>
-      </ul>
-      <ul class="title-bar">
-        <h1 class="ul-title"></h1>
-        <li class="item">
-          <i class="icon-coin-yen"></i>
-          <span class="title">钱包</span>
-        </li>
-        <li class="item">
-          <i class="icon-compass2"></i>
-          <span class="title">卡包</span>
-        </li>
-      </ul>
-      <ul class="title-bar">
-        <h1 class="ul-title"></h1>
-        <li class="item">
-          <i class="icon-flickr4 face"></i>
-          <span class="title">表情</span>
-        </li>
-      </ul>
-      <ul class="title-bar">
-        <h1 class="ul-title"></h1>
-        <li class="item">
-          <i class="icon-cog"></i>
-          <span class="title">设置</span>
-        </li>
-      </ul>
+  <div class="me">
+    <v-header></v-header>
+    <div class="content-wrapper" ref="meScroll">
+      <div class="allul">
+        <ul class="title-bar">
+          <h1 class="ul-title"></h1>
+          <router-link to="/account">
+            <li class="person">
+              <div class="img-wrapper">
+                <img src="/static/images/349878_7044878_1.jpg" width="70" height="70">
+              </div>
+              <div class="account-wrapper">
+                <div class="nickname">{{ account.nickname }}</div>
+                <div class="wechatAccount">微信号：{{ account.account }}</div>
+              </div>
+            </li> 
+          </router-link>
+        </ul>
+        <ul class="title-bar">
+          <h1 class="ul-title"></h1>
+          <li class="item">
+            <i class="icon-image"></i>
+            <span class="title">相册</span>
+          </li>
+          <li class="item">
+            <i class="icon-briefcase"></i>
+            <span class="title">收藏</span>
+          </li>
+        </ul>
+        <ul class="title-bar">
+          <h1 class="ul-title"></h1>
+          <li class="item">
+            <i class="icon-coin-yen"></i>
+            <span class="title">钱包</span>
+          </li>
+          <li class="item">
+            <i class="icon-compass2"></i>
+            <span class="title">卡包</span>
+          </li>
+        </ul>
+        <ul class="title-bar">
+          <h1 class="ul-title"></h1>
+          <li class="item">
+            <i class="icon-flickr4 face"></i>
+            <span class="title">表情</span>
+          </li>
+        </ul>
+        <ul class="title-bar">
+          <h1 class="ul-title"></h1>
+          <li class="item">
+            <i class="icon-cog"></i>
+            <span class="title">设置</span>
+          </li>
+        </ul>
+      </div>
     </div>
+    <v-footer></v-footer>
   </div>
 </template>
 
 <script>
+import Header from 'components/header/header.vue'
+import Footer from 'components/footer/footer.vue'
+
 import BScroll from 'better-scroll'
 
 const ERR_NO = 0
 
 export default {
   name: 'me',
+  activated () {
+    this.init()
+  },
   components: {
+    'v-header': Header,
+    'v-footer': Footer
   },
   data () {
     return {
@@ -77,27 +89,37 @@ export default {
         this.account = response.data
         this.$nextTick(() => {
           this.meScroll = new BScroll(this.$refs.meScroll, {
-            click: true
+            click: true,
+            probeType: 3
           })
         })
       }
     })
   },
   methods: {
+    init () {
+      if (this.meScroll) {
+        this.meScroll.refresh()
+      }
+    }
   }
 }
 </script>
 
 <style lang="stylus" rel="styleesheet/stylus">
   .me
-    position: absolute
-    top: 48px
-    bottom: 56px
+    position: fixed
+    top: 0
+    bottom: 0
     width: 100%
-    overflow: hidden
-    background-color: rgba(191, 188, 188, 0.17)
-    font-size: 16px
+    height: 100%
     .content-wrapper
+      position: absolute
+      top: 49px
+      bottom: 57px
+      width: 100%
+      overflow: hidden
+      background-color: rgba(191, 188, 188, 0.17)
       .title-bar
         background-color: #ffffff
         .ul-title
@@ -113,7 +135,7 @@ export default {
             text-align: center
             margin-top: 15px
             margin-bottom: 15px
-          .content-wrapper
+          .account-wrapper
             flex: 1
             margin-left: 20px
             .nickname
