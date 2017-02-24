@@ -1,7 +1,7 @@
 <template>
   <div class="search" ref="meScroll">
     <header class="title-bar">
-      <div class="back" @click="back">
+      <div class="back" @click="back()">
         <i class="icon-arrow-left2"></i>
       </div>
       <div class="content">
@@ -62,7 +62,7 @@ export default {
       this.searchText = ''
     },
     back () {
-      history.back()
+      this.$router.go(-1)
     },
     search (value, oldValue) {
       this.$http.get('/api/contacts').then((response) => {
@@ -103,7 +103,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" rel="styleesheet/stylus">
+<style lang="stylus" rel="stylesheet/stylus">
   .search
     position: fixed
     top: 0

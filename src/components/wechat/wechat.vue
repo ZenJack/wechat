@@ -114,7 +114,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" rel="styleesheet/stylus">
+<style lang="stylus" rel="stylesheet/stylus">
   .wechat
     position: fixed
     top: 0

@@ -62,7 +62,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" rel="styleesheet/stylus">
+<style lang="stylus" rel="stylesheet/stylus">
   .discover
     position: fixed
     top: 0
