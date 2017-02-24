@@ -6,9 +6,10 @@ Vue.use(Router)
 import Wechat from 'components/wechat/wechat'
 import Discover from 'components/discover/discover'
 import Contact from 'components/contact/contact'
+import Search from 'components/search/search'
 import Me from 'components/me/me'
 import Account from 'components/account/account'
-import Search from 'components/search/search'
+import Nickname from 'components/nickname/nickname'
 
 export default new Router({
   mode: 'history',
@@ -36,6 +37,10 @@ export default new Router({
     {
       path: '/account',
       component: Account
+    },
+    {
+      path: '/nickname',
+      component: Nickname
     },
     {
       path: '/search',

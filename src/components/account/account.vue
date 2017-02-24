@@ -1,9 +1,7 @@
 <template>
-  <div class="account" ref="meScroll">
+  <div class="account" ref="accountScroll">
     <header>
-      <router-link to="/me">
-        <i class="icon-arrow-left2"></i>
-      </router-link>
+      <i class="icon icon-arrow-left2" @click="back()"></i>
       <span class="title">个人信息</span>
     </header>
     <div class="content-wrapper">
@@ -15,10 +13,12 @@
             <img :src="account.img" width="60" height="60">
           </div>
         </li>
-        <li class="item">
-          <h1 class="title">昵称</h1>
-          <div class="content">{{ account.nickname }}</div>
-        </li>
+        <router-link to="/nickname">
+          <li class="item">
+            <h1 class="title">昵称</h1>
+            <div class="content">{{ account.nickname }}</div>
+          </li>
+        </router-link>
         <li class="item">
           <h1 class="title">微信号</h1>
           <div class="content">{{ account.account }}</div>
@@ -50,15 +50,13 @@
 
 <script>
 
-const ERR_NO = 0
-
 export default {
   name: 'account',
   beforeRouteEnter (to, from, next) {
-    if (from.path === '/me') {
+    if (from.path === '/me' || from.path === '/nickname') {
       next()
     } else {
-      next('/wechat')
+      next('/me')
     }
   },
   data () {
@@ -67,19 +65,17 @@ export default {
     }
   },
   created () {
-    this.$http.get('/api/account').then((response) => {
-      response = response.body
-      if (response.errno === ERR_NO) {
-        this.account = response.data
-      }
-    })
+    this.account = this.$store.state.account
   },
   methods: {
+    back () {
+      this.$router.go(-1)
+    }
   }
 }
 </script>
 
-<style lang="stylus" rel="styleesheet/stylus">
+<style lang="stylus" rel="stylesheet/stylus">
   .account
     position: fixed
     top: 0
@@ -93,7 +89,7 @@ export default {
       height: 48px
       background-color: #262721
       color: #fff
-      i
+      .icon
         display: inline-block
         width: 48px
         height: 48px
@@ -116,7 +112,8 @@ export default {
         min-height: 50px
         border-bottom: 1px solid rgba(0, 0, 0, 0.12)
         display: flex
-        align-items: center        
+        align-items: center
+        color: #000
         &:last-child
           border-bottom: none
         .title

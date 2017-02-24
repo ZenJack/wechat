@@ -64,7 +64,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" rel="styleesheet/stylus">
+<style lang="stylus" rel="stylesheet/stylus">
   .header
     height: 48px
     background-color: #272822

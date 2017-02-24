@@ -33,7 +33,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" rel="styleesheet/stylus">
+<style lang="stylus" rel="stylesheet/stylus">
   .footer
     position: fixed
     left: 0

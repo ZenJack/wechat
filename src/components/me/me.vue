@@ -86,7 +86,8 @@ export default {
     this.$http.get('/api/account').then((response) => {
       response = response.body
       if (response.errno === ERR_NO) {
-        this.account = response.data
+        let account = response.data
+        this.storeAccount(account)
         this.$nextTick(() => {
           this.meScroll = new BScroll(this.$refs.meScroll, {
             click: true,
@@ -101,12 +102,16 @@ export default {
       if (this.meScroll) {
         this.meScroll.refresh()
       }
+    },
+    storeAccount (account) {
+      this.$store.commit('setAccount', account)
+      this.account = account
     }
   }
 }
 </script>
 
-<style lang="stylus" rel="styleesheet/stylus">
+<style lang="stylus" rel="stylesheet/stylus">
   .me
     position: fixed
     top: 0
