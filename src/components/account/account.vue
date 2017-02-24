@@ -94,9 +94,11 @@ export default {
   },
   watch: {
     gender (value, oldValue) {
-      this.account.gender = value
-      this.$store.commit('setAccount', this.account)
-      this.toggleGender()
+      if (oldValue) {
+        this.account.gender = value
+        this.$store.commit('setAccount', this.account)
+        this.toggleGender()
+      }
     }
   },
   created () {
