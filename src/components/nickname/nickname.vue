@@ -1,5 +1,5 @@
 <template>
-  <div class="v-nickname" ref="nicknameScroll">
+  <div class="v-nickname" ref="nicknameScroll" @keyup.enter="saveNickname()">
     <header>
       <i class="icon icon-arrow-left2" @click="back()"></i>
       <span class="title">更改名字</span>
