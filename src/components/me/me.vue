@@ -2,7 +2,7 @@
   <div class="me">
     <v-header></v-header>
     <div class="content-wrapper" ref="meScroll">
-      <div class="allul">
+      <div class="ul-wrapper">
         <ul class="title-bar">
           <h1 class="ul-title"></h1>
           <router-link to="/account">
