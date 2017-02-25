@@ -47,7 +47,7 @@
         </ul>
       </div>
     </div>
-    <div class="gender-wrapper" v-show="genderShow">
+    <div class="gender-wrapper" v-show="genderShow" @click="toggleGender()">
       <mt-radio
         title="性别" 
         align="right" 
