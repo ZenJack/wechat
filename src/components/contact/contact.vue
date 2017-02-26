@@ -20,7 +20,7 @@
       </ul>
       <div class="alpha-table" :class="{'hover': selectedAlphatab}">
         <ul class="alpha-list">
-          <li class="alpha" v-for="(alpha, index) in alphatab" @click="selectAlpha(alpha,index)">{{ alpha }}</li>
+          <li class="alpha" v-for="(alpha, index) in alphatab" @mousedown="selectAlpha(alpha,index)" @mouseup="unselectAlpha" @touchstart="selectAlpha(alpha,index)" @touchend="unselectAlpha">{{ alpha }}</li>
         </ul>
       </div>
       <div class="alphaPanel" v-show="alpha">
@@ -74,6 +74,8 @@ export default {
         })
       }
     })
+
+    window.addEventListener('mouseover', this.keydown)
   },
   computed: {
     contactCount () {
@@ -108,10 +110,10 @@ export default {
       if (el) {
         this.contactScroll.scrollToElement(el, 300)
       }
-      setTimeout(() => {
-        this.alpha = ''
-        this.selectedAlphatab = false
-      }, 500)
+    },
+    unselectAlpha (event) {
+      this.alpha = ''
+      this.selectedAlphatab = false
     }
   }
 }
