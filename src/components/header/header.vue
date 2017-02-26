@@ -12,7 +12,7 @@
         <i class="icon-plus"></i>
       </div>
     </div>
-    <div class="addPanel" v-show="addPanel" @click.stop="toggleAdd">
+    <div class="addPanel" v-show="addPanel" @click.self="toggleAdd">
       <transition name="fade">
         <div class="menu-wraaper" v-show="addPanel">
           <ul>
