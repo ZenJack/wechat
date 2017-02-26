@@ -49,24 +49,21 @@ export default {
       response = response.body
       if (response.errno === ERR_NO) {
         this.msgs = response.data
-        let _this = this
         this.$nextTick(() => {
           this.itemScroll = new BScroll(this.$refs.itemScroll, {
             click: true,
             probeType: 3
           })
-          this.itemScroll.on('scroll', function (pos) {
-            if (pos.y >= 60 && !_this.refresh) {
-              _this.refresh = true
-              Indicator.open()
+          this.itemScroll.on('scroll', (pos) => {
+            if (!this.refresh && pos.y >= 50) {
+              this.refresh = true
               Indicator.open({
                 text: '刷新中...',
                 spinnerType: 'triple-bounce'
               })
               setTimeout(() => {
-                Indicator.close()
-                _this.addMsgs()
-              }, 1500)
+                this.addMsgs()
+              }, 1000)
             }
           })
         })
@@ -101,14 +98,21 @@ export default {
           let msg = news[index]
           msg.time = new Date().getTime()
           this.msgs.unshift(msg)
-          this.refresh = false
-          this.$nextTick(() => {
-            if (this.itemScroll) {
-              this.itemScroll.refresh()
-            }
-          })
+          this.closeIndicator()
         }
       })
+    },
+    refreshScroll () {
+      this.$nextTick(() => {
+        if (this.itemScroll) {
+          this.itemScroll.refresh()
+        }
+      })
+    },
+    closeIndicator () {
+      this.refresh = false
+      Indicator.close()
+      this.refreshScroll()
     }
   }
 }
