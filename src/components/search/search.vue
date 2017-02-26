@@ -155,6 +155,7 @@ export default {
           &::-moz-placeholder
             color: rgba(154, 144, 144, 0.95)
         .icon-cross
+          flex: 0 0 20px
           font-size: 14px
           color: rgba(154, 144, 144, 0.95)
     .content-wrapper
