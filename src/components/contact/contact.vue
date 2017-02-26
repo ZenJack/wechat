@@ -6,7 +6,7 @@
         <li class="contact-list contact-list-hook" v-for="contact in contacts">
           <h1 class="alpha-name">{{ contact.name | uppercase }}</h1>
           <ul>
-            <li class="item" v-for="item in contact.contact">
+            <li class="item" v-for="item in contact.contact" @mousedown="setBackname" @mouseup="unsetBackname" @touchstart="setBackname" @touchend="unsetBackname">
               <div class="img-wraaper">
                 <img :src="item.img" width="48" height="48">
               </div>
@@ -20,11 +20,14 @@
       </ul>
       <div class="alpha-table" :class="{'hover': selectedAlphatab}">
         <ul class="alpha-list">
-          <li class="alpha" v-for="(alpha, index) in alphatab" @click="selectAlpha(alpha,index)">{{ alpha }}</li>
+          <li class="alpha" v-for="(alpha, index) in alphatab" @mousedown="selectAlpha(alpha,index)" @mouseup="unselectAlpha" @touchstart="selectAlpha(alpha,index)" @touchend="unselectAlpha">{{ alpha }}</li>
         </ul>
       </div>
       <div class="alphaPanel" v-show="alpha">
         <span class="alpha">{{ alpha }}</span>
+      </div>
+      <div class="backNamePanel" v-show="backNameShow" @mousedown.self="closeBackname" @touchstart.self="closeBackname">
+        <span class="backName">设置备注</span>
       </div>
     </div>
    <v-footer></v-footer>
@@ -51,7 +54,9 @@ export default {
       selectedAlphatab: false,
       alpha: '',
       contactList: [],
-      contactCountShow: false
+      contactCountShow: false,
+      backNameShow: false,
+      touchEvent: null
     }
   },
   components: {
@@ -108,10 +113,21 @@ export default {
       if (el) {
         this.contactScroll.scrollToElement(el, 300)
       }
-      setTimeout(() => {
-        this.alpha = ''
-        this.selectedAlphatab = false
+    },
+    unselectAlpha (event) {
+      this.alpha = ''
+      this.selectedAlphatab = false
+    },
+    setBackname () {
+      this.touchEvent = setTimeout(() => {
+        this.backNameShow = true
       }, 500)
+    },
+    unsetBackname (event) {
+      clearTimeout(this.touchEvent)
+    },
+    closeBackname (event) {
+      this.backNameShow = false
     }
   }
 }
@@ -183,7 +199,7 @@ export default {
           .alpha
             flex: 1
             font-size: 14px
-      .alphaPanel
+      .alphaPanel, .backNamePanel
         position: absolute
         top: 0
         left: 0
@@ -202,4 +218,16 @@ export default {
           color: #eaeaea
           text-align: center
           border-radius: 5px
+      .backNamePanel
+        background-color: rgba(37, 31, 31, 0.45)
+        .backName
+          font-size: 16px
+          color: #000
+          width: 70%;
+          height: 2.5em
+          background: #fff
+          line-height: 2.5em
+          text-align: left
+          padding-left: 20px
+          border-radius: 3px
 </style>
