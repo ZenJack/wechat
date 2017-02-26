@@ -119,22 +119,14 @@ export default {
       this.selectedAlphatab = false
     },
     setBackname () {
-      console.log('down')
       this.touchEvent = setTimeout(() => {
         this.backNameShow = true
       }, 500)
     },
-    cancel () {
-      console('cancel')
-    },
     unsetBackname (event) {
-      console.log('up')
-      console.log(event)
       clearTimeout(this.touchEvent)
     },
     closeBackname (event) {
-      console.log('close')
-      console.log(event)
       this.backNameShow = false
     }
   }
