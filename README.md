@@ -36,7 +36,7 @@ npm run build
 包括基本的指令、vue-router、vuex等等。下面会具体说明。
 ```
 
-[回顶部](#WeChat)
+[回顶部](#wechat)
 
 ---
 
@@ -55,7 +55,7 @@ npm run build
      调用 mint-ui 的 Indicator 显示刷新等待，当服务器返回数据并关闭 Indicator
 ```
 
-[回顶部](#WeChat)
+[回顶部](#wechat)
 
 ---
 
@@ -100,7 +100,7 @@ npm run build
   所有联系人总数面板应当关闭，直到列表获取完毕，数据被渲染完时，才显示联系人总数面板。
 ```
 
-[回顶部](#WeChat)
+[回顶部](#wechat)
 
 ---
 
@@ -126,7 +126,7 @@ npm run build
 
 参考：[过渡动效](http://router.vuejs.org/zh-cn/advanced/transitions.html)
 
-[回顶部](#WeChat)
+[回顶部](#wechat)
 
 ---
 
@@ -181,7 +181,7 @@ npm run build
 
 参考：[导航钩子](http://router.vuejs.org/zh-cn/advanced/navigation-guards.html)
 
-[回顶部](#WeChat)
+[回顶部](#wechat)
 
 ---
 
@@ -220,7 +220,7 @@ npm run build
 
 参考：[deactivated](http://cn.vuejs.org/v2/api/#deactivated), [activated](http://cn.vuejs.org/v2/api/#activated)
 
-[回顶部](#WeChat)
+[回顶部](#wechat)
 
 ---
 
@@ -238,6 +238,6 @@ npm run build
   4. 最后触发一个函数，动态更改一变量，使用 v-show 指令来控制面板的显示或隐藏
 ```
 
-[回顶部](#WeChat)
+[回顶部](#wechat)
 
 ---
