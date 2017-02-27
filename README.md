@@ -20,7 +20,7 @@ npm run build
 
 ### 项目说明
 - [简要](#summary)
-- [微信](#wechat)
+- [微信](#微信)
 - [通讯录](#contact)
 - [发现](#discover)
 - [我](#me)
@@ -38,9 +38,7 @@ npm run build
 包括基本的指令、vue-router、vuex等等。下面会具体说明。
 ```
 
-<h3 id="wechat">
-1. 微信
-</h3>
+### 微信
 ![](./docs/printscreen/wechat.gif)
 ```
 如图所示，系统默认进入聊天页面。
