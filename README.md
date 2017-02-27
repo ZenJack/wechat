@@ -19,24 +19,26 @@ npm run build
 ---
 
 ### 项目说明
-- [简要](#summary)
-- [微信](#微信)
-- [通讯录](#contact)
-- [发现](#discover)
-- [我](#me)
-- [搜索](#search)
-- [添加](#add)
+1. [简要](#简要)
+2. [微信](#微信)
+3. [通讯录](#通讯录)
+4. [发现](#发现)
+5. [我](#我)
+6. [搜索](#搜索)
+7. [添加](#添加)
 
 ---
 
-<h3 id="summary">
-简要
-</h3>
+### 简要
 ```
 这是一个模仿微信的实例。
 整个实例使用了 vue2.x 开发栈的大部分技术。
 包括基本的指令、vue-router、vuex等等。下面会具体说明。
 ```
+
+[回顶部](#WeChat)
+
+---
 
 ### 微信
 ![](./docs/printscreen/wechat.gif)
@@ -53,11 +55,11 @@ npm run build
      调用 mint-ui 的 Indicator 显示刷新等待，当服务器返回数据并关闭 Indicator
 ```
 
+[回顶部](#WeChat)
+
 ---
 
-<h3 id="contact">
-2. 通讯录
-</h3>
+### 通讯录
 ![](./docs/printscreen/contact.gif)
 ```
 本页功能：
@@ -98,11 +100,11 @@ npm run build
   所有联系人总数面板应当关闭，直到列表获取完毕，数据被渲染完时，才显示联系人总数面板。
 ```
 
+[回顶部](#WeChat)
+
 ---
 
-<h3 id="discover">
-3. 发现
-</h3>
+### 发现
 ![](./docs/printscreen/discover.gif)
 ```
 本页功能：
@@ -121,13 +123,14 @@ npm run build
   然后“动态”设置 transition 的 name 值，
   由此实现不同页面开场动画不同的目标
 ```
+
 参考：[过渡动效](http://router.vuejs.org/zh-cn/advanced/transitions.html)
+
+[回顶部](#WeChat)
 
 ---
 
-<h3 id="me">
-4. 我
-</h3>
+### 我
 ![](./docs/printscreen/me.gif)
 ```
 本页功能：
@@ -175,13 +178,14 @@ npm run build
   4. 为了实现”逻辑父子关系“，
      在进入”子页面“时，在导航钩子 beforeRouteEnter 中进行过滤筛选
 ```
+
 参考：[导航钩子](http://router.vuejs.org/zh-cn/advanced/navigation-guards.html)
+
+[回顶部](#WeChat)
 
 ---
 
-<h3 id="search">
-5. 搜索
-</h3>
+### 搜索
 ![](./docs/printscreen/search.gif)
 ```
 本页功能：
@@ -213,13 +217,14 @@ npm run build
     其次，当离开页面时，会触发 deactivated 钩子，
     在 deactivated 钩子做清空操作即可。
 ```
+
 参考：[deactivated](http://cn.vuejs.org/v2/api/#deactivated), [activated](http://cn.vuejs.org/v2/api/#activated)
+
+[回顶部](#WeChat)
 
 ---
 
-<h3 id="add">
-6. 添加
-</h3>
+### 添加
 ![](./docs/printscreen/add.gif)
 ```
 本页功能：
@@ -232,5 +237,7 @@ npm run build
   3. 设置“+”元素的 index: 10
   4. 最后触发一个函数，动态更改一变量，使用 v-show 指令来控制面板的显示或隐藏
 ```
+
+[回顶部](#WeChat)
 
 ---
