@@ -6,7 +6,7 @@
       </div>
       <div class="content">
         <i class="icon-search"></i>
-        <input class="search-input" v-model="searchText" type="text" placeholder="搜索">
+        <input class="search-input" v-model="searchText" type="text" placeholder="搜索" ref="inputSearch">
         <i class="icon-cross" v-show="showDel" @click="clearSearchText"></i>
       </div>
     </header>
@@ -33,6 +33,9 @@ const ERR_NO = 0
 
 export default {
   name: 'search',
+  activated () {
+    this.$refs.inputSearch.focus()
+  },
   deactivated () {
     this.clearSearchText()
   },
