@@ -7,7 +7,7 @@
     </header>
     <div class="content-wrapper">
       <div class="input-wrapper">
-        <input type="text" v-model="nickname" class="input-nickname">
+        <input type="text" v-model="nickname" class="input-nickname" ref="inputNickname">
       </div>
       <div class="info-bar">
         好名字可以让你的朋友更容易记住你。
@@ -24,6 +24,9 @@
       } else {
         next('/me')
       }
+    },
+    activated () {
+      this.$refs.inputNickname.focus()
     },
     deactivated () {
       this.nickname = this._nickname()
