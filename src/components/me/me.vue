@@ -8,7 +8,7 @@
           <router-link to="/account">
             <li class="person">
               <div class="img-wrapper">
-                <img src="/static/images/349878_7044878_1.jpg" width="70" height="70">
+                <img :src="account.img" width="70" height="70">
               </div>
               <div class="account-wrapper">
                 <div class="nickname">{{ account.nickname }}</div>
