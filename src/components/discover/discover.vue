@@ -64,7 +64,7 @@ export default {
 
 <style lang="stylus" rel="stylesheet/stylus">
   .discover
-    position: fixed
+    position: absolute
     top: 0
     bottom: 0
     width: 100%

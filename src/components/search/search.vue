@@ -108,7 +108,7 @@ export default {
 
 <style lang="stylus" rel="stylesheet/stylus">
   .search
-    position: fixed
+    position: absolute
     top: 0
     left: 0
     width: 100%

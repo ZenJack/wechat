@@ -68,7 +68,7 @@
 </script>
 <style lang="stylus" rel="stylesheet/stlyus">
   .v-nickname
-    position: fixed
+    position: absolute
     top: 0
     left: 0
     width: 100%
