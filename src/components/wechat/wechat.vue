@@ -120,7 +120,7 @@ export default {
 
 <style lang="stylus" rel="stylesheet/stylus">
   .wechat
-    position: fixed
+    position: absolute
     top: 0
     bottom: 0
     width: 100%

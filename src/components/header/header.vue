@@ -95,7 +95,7 @@ export default {
         margin-right: 10px
         z-index: 10
     .addPanel
-      position: fixed
+      position: absolute
       left: 0
       top: 0
       width: 100%

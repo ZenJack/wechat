@@ -35,7 +35,7 @@ export default {
 
 <style lang="stylus" rel="stylesheet/stylus">
   .footer
-    position: fixed
+    position: absolute
     left: 0
     bottom: 0
     height: 56px
