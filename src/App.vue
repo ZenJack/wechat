@@ -37,7 +37,8 @@ export default {
       margin: 0 auto
       width: 414px
       height: 100vh
-      border: 1px solid #bbb1b1
+      border-left: 1px solid #bbb1b1
+      border-right: 1px solid #bbb1b1
   
   .search-enter-active
     transition: all 0.2s linear

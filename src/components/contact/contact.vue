@@ -20,7 +20,7 @@
       </ul>
       <div class="alpha-table" :class="{'hover': selectedAlphatab}">
         <ul class="alpha-list">
-          <li class="alpha" v-for="(alpha, index) in alphatab" @mousedown="selectAlpha(alpha,index)" @mouseup="unselectAlpha" @touchstart="selectAlpha(alpha,index)" @touchend="unselectAlpha">{{ alpha }}</li>
+          <li class="alpha" v-for="(alpha, index) in trueAlphatab" @mousedown="selectAlpha(alpha,index)" @mouseup="unselectAlpha" @touchstart="selectAlpha(alpha,index)" @touchend="unselectAlpha">{{ alpha }}</li>
         </ul>
       </div>
       <div class="alphaPanel" v-show="alpha">
@@ -89,6 +89,18 @@ export default {
         })
       })
       return lenth
+    },
+    trueAlphatab () {
+      let tabs = ['↑']
+      this.contacts.forEach((list) => {
+        let name = list.name.toUpperCase()
+        this.alphatab.forEach((e) => {
+          if (e === name) {
+            tabs.push(e)
+          }
+        })
+      })
+      return tabs
     }
   },
   methods: {
@@ -112,6 +124,17 @@ export default {
       }
       if (el) {
         this.contactScroll.scrollToElement(el, 300)
+      }
+    },
+    firstPinyin: function (char) {
+      if (char === 'ā' || char === 'á' || char === 'ǎ' || char === 'à') {
+        return 'a'
+      } else if (char === 'ō' || char === 'ó' || char === 'ǒ' || char === 'ò') {
+        return 'o'
+      } else if (char === 'ē' || char === 'é' || char === 'ě' || char === 'è') {
+        return 'e'
+      } else {
+        return char
       }
     },
     unselectAlpha (event) {
