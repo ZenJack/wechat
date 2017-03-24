@@ -18,7 +18,7 @@
           <ul>
             <li class="item">
               <i class="icon-bubble"></i>
-              <span class="name">发起群聊</span>
+              <span class="name"><router-link to="/demo-pug">Pug 知识</router-link></span>
             </li>
             <li class="item">
               <i class="icon-user-plus"></i>
@@ -134,4 +134,6 @@ export default {
             font-size: 16px
             vertical-align: top
             margin-left: 10px
+            a
+              color: #ffffff
 </style>

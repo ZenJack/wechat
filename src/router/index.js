@@ -10,6 +10,8 @@ import Search from 'components/search/search'
 import Me from 'components/me/me'
 import Account from 'components/account/account'
 import Nickname from 'components/nickname/nickname'
+import DemoSelect from 'components/demo/demoSelect'
+import DemoPug from 'components/demo/demoPug'
 
 export default new Router({
   mode: 'history',
@@ -45,6 +47,14 @@ export default new Router({
     {
       path: '/search',
       component: Search
+    },
+    {
+      path: '/demo-select',
+      component: DemoSelect
+    },
+    {
+      path: '/demo-pug',
+      component: DemoPug
     }
   ]
 })
