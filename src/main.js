@@ -7,6 +7,9 @@ import store from './store'
 import Mint from 'mint-ui'
 import VueResource from 'vue-resource'
 
+import 'assets/css/mintui.css'
+import 'assets/css/reset.css'
+
 Vue.use(Mint)
 Vue.use(VueResource)
 

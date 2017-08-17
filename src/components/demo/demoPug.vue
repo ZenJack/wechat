@@ -1,7 +1,8 @@
 <template lang="pug">
+  -var prefix = 'zen-'
   div.demoPug
     p.title
-      button.back(@click="back()") &lt;返回
+      button.back(@click="back()" class=prefix+'back') &lt;返回
       span 你好 {{name}}!
     div.content
       p 优点：

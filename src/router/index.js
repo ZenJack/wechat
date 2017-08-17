@@ -15,6 +15,7 @@ import DemoPug from 'components/demo/demoPug'
 
 export default new Router({
   mode: 'history',
+  base: '/wechat',
   routes: [
     {
       path: '/',
